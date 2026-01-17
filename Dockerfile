@@ -1,7 +1,15 @@
 # Use Ubuntu 22.04 (jammy) to match the SANE PPA
 FROM ubuntu:22.04
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update
+
+RUN apt-get install -y software-properties-common
+
+RUN add-apt-repository "deb http://ppa.launchpad.net/sane-project/sane-release/ubuntu jammy main"
+
+RUN apt-get update
+
+RUN apt-get install -y \
         gnupg \
         ca-certificates \
         software-properties-common \
@@ -17,10 +25,7 @@ RUN apt-get update && apt-get install -y \
         util-linux \
         parallel \
         units \
-        bc \
-    && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1C4CBDCDCD2EFD2A \
-    && add-apt-repository "deb http://ppa.launchpad.net/sane-project/sane-release/ubuntu jammy main" \
-    && apt-get update && apt-get install -y sane-utils
+        bc
 
 WORKDIR /app
 
