@@ -41,4 +41,4 @@ COPY scan.sh /etc/scanbd/scripts/scan.sh
 
 VOLUME /scans
 
-CMD ["scanbd", "-d1", "-f"]
+CMD ["scanbd", "-d7", "-f"]
